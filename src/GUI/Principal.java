@@ -7,6 +7,10 @@ package GUI;
 
 public class Principal {
 	public Principal() {
-		//contenido para modifica y probar git
+		//Este codigo se modigfico cuando liz modificaba :D
+	}
+	
+	public void method() {
+		//prueba de codigo
 	}
 }
