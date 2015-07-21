@@ -1,5 +1,3 @@
-import javax.swing.JOptionPane;
-
 /**
  * @author Javier Burón Gutiérrez; Lizeth Vásquez Rojas.
  *
@@ -8,7 +6,7 @@ import javax.swing.JOptionPane;
 public class Ejecutar {
 
 	public static void main(String[] args) {
-		JOptionPane.showMessageDialog(null, "hla");
+		//Ya lo modifique ora aver que sale :D suerte e
 	}
 
 }
