@@ -6,7 +6,7 @@
 public class Ejecutar {
 
 	public static void main(String[] args) {
-		//Ya lo modifique ora aver que sale :D suerte e
+		//Ejecutar (main)
 	}
 	public void metodo(double uno){
 		//aqui recibo
