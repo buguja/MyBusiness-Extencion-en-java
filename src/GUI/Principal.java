@@ -8,66 +8,83 @@ package GUI;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
+import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
 
-public class Principal extends JDialog implements ActionListener {
+public class Principal extends JFrame implements ActionListener {
 	private JLabel logoLbl;
 	private JLabel tituloLbl;
 	private JLabel infoLbl;
+	private JTable tabla;
+	private JTextArea area;
 	
 	public Principal() {
-		setModal(true);
+		//setModal(true);
+		setTitle("CONTROL DE INVENTARIO");
 		
-		//Creacion de paneles
-		/*JPanel panelDerecho = new JPanel();*/
-		JPanel panelCentro = new JPanel(); 
+		//CREACIÓN DE PANELES
+		JPanel panelDerecho = new JPanel();
 		JPanel panelNorte = new JPanel();
 		
 		JPanel panelTituloLbl = new JPanel();
 		JPanel panelInfoLbl = new JPanel();
-		JPanel panelTabla = new JPanel();
 		
-		//Creación de contenido de los paneles
+		//CREACIÓN DEL CONTENIDO DE LOS PANELES
 		tituloLbl = new JLabel("CONTROL DE INVENTARIO");
 		infoLbl = new JLabel("Desarrollado por: " + "\n" + "Javier Burón Gutierrez | Lizeth Vásquez Rojas");
+		area = new JTextArea("Vista Factura");
+		JScrollPane panel = new JScrollPane(area,JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS); 
+		area.setPreferredSize(new Dimension(200,390));
 		
-		//Agregando contenido a su panel correspondiente
+		//AGREGANDO CONTENIDO A LOS PANELES
 		panelTituloLbl.add(tituloLbl);
 		panelInfoLbl.add(infoLbl);
+		panelDerecho.add(panel);
 		
-		//Agregando panel a paneles
+		//AGREGANDO PANEL A LOS PANELES CONTENEDORES
 		panelNorte.setLayout(new GridLayout(1,3));
 		panelNorte.add(panelTituloLbl);
 		panelNorte.add(panelInfoLbl);
 		
-		//Mostrando panel en ventana
+		//MOSTRANDO PANEL EN LA VENTANA
 		add(panelNorte,BorderLayout.NORTH);
+		add(panelDerecho,BorderLayout.EAST);
 		
-		//Creación de tabla
-		Object[][] datos = {
-				{"AH017D4", "PCC Ricardo Martinez Velazco", new Boolean(false)},
-				{"AH017E9", "Ponle Color y Computo", new Boolean(true) },
-				{"AH017F1", "Factura 2", new Boolean(false)},
-		};
+		//CREACIÓN DE LA TABLA
 		String[] columnNames = {"Folio","Descripción","Todo",};
-		DefaultTableModel dtm= new DefaultTableModel(datos,columnNames);
-		final JTable table = new JTable(dtm);
-		JScrollPane scrollPane = new JScrollPane(table);
-		getContentPane().add(scrollPane, BorderLayout.CENTER);
+		Object[][] datos = {
+				{"AH013D4", "PCC Ricardo Martinez Velazco", new Boolean(true)},
+				{"AH015E9", "Ponle Color y Computo", new Boolean(false) },
+				{"AH018F1", "Factura 2", new Boolean(true)},
+		};
 		
-		//Escuchar a los eventos
+		DefaultTableModel dtm= new DefaultTableModel(datos,columnNames);
+		 tabla = new JTable(dtm) {
+            @Override
+            public Class getColumnClass(int column) {
+                switch (column) {
+                    case 0:
+                        return String.class;
+                    case 1:
+                        return String.class;
+                    default:
+                        return Boolean.class;
+                }
+            }
+	        };
+		 tabla.setPreferredScrollableViewportSize(tabla.getPreferredSize());
+		 JScrollPane scrollPane = new JScrollPane(tabla);
+		 getContentPane().add(scrollPane,BorderLayout.CENTER); 
+				 
+		//ESCUCHAR A LOS EVENTOS
 		//botonSalir.addActionListener(this);
 		
 		setSize(790,470);
