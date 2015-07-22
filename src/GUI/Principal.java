@@ -10,7 +10,6 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -20,7 +19,6 @@ import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
 
 public class Principal extends JFrame implements ActionListener {
-	private JLabel logoLbl;
 	private JLabel tituloLbl;
 	private JLabel infoLbl;
 	private JTable tabla;
@@ -64,6 +62,32 @@ public class Principal extends JFrame implements ActionListener {
 				{"AH013D4", "PCC Ricardo Martinez Velazco", new Boolean(true)},
 				{"AH015E9", "Ponle Color y Computo", new Boolean(false) },
 				{"AH018F1", "Factura 2", new Boolean(true)},
+				{"AH018F1", "Factura 2", new Boolean(true)},
+				{"AH018F1", "Factura 2", new Boolean(true)},
+				{"AH018F1", "Factura 2", new Boolean(true)},
+				{"AH018F1", "Factura 2", new Boolean(true)},
+				{"AH018F1", "Factura 2", new Boolean(true)},
+				{"AH018F1", "Factura 2", new Boolean(true)},
+				{"AH018F1", "Factura 2", new Boolean(true)},
+				{"AH018F1", "Factura 2", new Boolean(true)},
+				{"AH018F1", "Factura 2", new Boolean(true)},
+				{"AH018F1", "Factura 2", new Boolean(true)},
+				{"AH018F1", "Factura 2", new Boolean(true)},
+				{"AH018F1", "Factura 2", new Boolean(true)},
+				{"AH018F1", "Factura 2", new Boolean(true)},
+				{"AH018F1", "Factura 2", new Boolean(true)},
+				{"AH018F1", "Factura 2", new Boolean(true)},
+				{"AH018F1", "Factura 2", new Boolean(true)},
+				{"AH018F1", "Factura 2", new Boolean(true)},
+				{"AH018F1", "Factura 2", new Boolean(true)},
+				{"AH018F1", "Factura 2", new Boolean(true)},
+				{"AH018F1", "Factura 2", new Boolean(true)},
+				{"AH018F1", "Factura 2", new Boolean(true)},
+				{"AH018F1", "Factura 2", new Boolean(true)},
+				{"AH018F1", "Factura 2", new Boolean(true)},
+				{"AH018F1", "Factura 2", new Boolean(true)},
+				{"AH018F1", "Factura 2", new Boolean(true)},
+				{"AH018F1", "Factura 2", new Boolean(true)},
 		};
 		
 		DefaultTableModel dtm= new DefaultTableModel(datos,columnNames);
@@ -89,7 +113,7 @@ public class Principal extends JFrame implements ActionListener {
 		
 		setSize(790,470);
 		setLocationRelativeTo(null);
-		setResizable(false);
+		//setResizable(false);
 		setVisible(true);
 	}
 
