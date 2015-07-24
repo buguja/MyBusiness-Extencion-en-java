@@ -25,6 +25,8 @@ public class Ejecutar {
 			}
 		}
 		
+		new Principal(new ManejadorXml(rutaCarpetaXml));
+		
 		/*Principal principalGUI = null;
 		ManejadorXml mnXML = new ManejadorXml(rutaCarpetaXml);
 		String[] nombresXML = new String[mnXML.getNombresXML().size()];

@@ -28,7 +28,7 @@ public class Principal extends JFrame implements ActionListener {
 	private JTable tabla;
 	private JTextArea area;
 	
-	public Principal(ManejadorXml manejadorXml) {
+	public Principal(ManejadorXml manejadorXml){
 		//setModal(true);
 		setTitle("CONTROL DE INVENTARIO");
 		
@@ -88,11 +88,8 @@ public class Principal extends JFrame implements ActionListener {
 		 getContentPane().add(scrollPane,BorderLayout.CENTER); 
 		 
 		 //CREACIÓN DE LA LISTA
-		 String[] nombres = {"CFDI-MAVR791010KM9-A-3338","CFDI-MAVR791010KM9-A-3338","CFDI-MAVR791010KM9-A-3338","Divian", 
-							 "Leslie","Paz","Andrea","Macarena","Margarita","Daniela","Divian", 
-							 "Leslie","Paz","Andrea","Macarena","Margarita","Daniela","Divian", 
-							 "Leslie","Paz","Andrea","CFDI-MAVR791010KM9-A-3338","CFDI-MAVR791010KM9-A-3338","CFDI-MAVR791010KM9-A-3338"
-							 ,"CFDI-MAVR791010KM9-A-3338","CFDI-MAVR791010KM9-A-3338"};
+		 String[] nombres = new String[manejadorXml.getNombresXML().size()];
+		 manejadorXml.getNombresXML().toArray(nombres);
 		 JList lista = new JList(nombres);
 		 JScrollPane scroll = new JScrollPane(lista);
 		 getContentPane().add(scroll, BorderLayout.EAST);
