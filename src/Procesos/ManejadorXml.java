@@ -11,29 +11,41 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 public class ManejadorXml {
-	private ArrayList<Document> rutasXML;	
+	private ArrayList<String> nombresXML;	
 	
-	public ArrayList<Document> getRutasXML() {
-		return rutasXML;
+	public ArrayList<String> getNombresXML() {
+		return nombresXML;
 	}
-
+	
+	/**
+	 * Obtiene de la carpeta con los xml, los nombres de los archivos xml ubicados en la carpeta y estos nombres son
+	 * almacenados en la varible "nombresXML". 
+	 * @param rutaFolderXml Ruta estática de la carpeta que contiene los archivos xml a procesar
+	 * 
+	 */
 	public ManejadorXml(String rutaFolderXml){
 		File f = new File(rutaFolderXml);
-		if(!f.exists()){
-			System.out.println("la carpeta espesificada no existe");
-		}
-		
-		rutasXML = new ArrayList<Document>();
-		File[] archivos = f.listFiles();
-		for(int i=0; i<archivos.length; i++){
-			String fileXML = rutaFolderXml + archivos[i].getName();
-			if(validarExtencionXML(fileXML)){
-				rutasXML.add(leerXML(new File(fileXML)));
+		if(f.exists()){ //Comprobando que la carpeta especificada, exista o sea accecible
+			nombresXML = new ArrayList<String>();
+			File[] archivos = f.listFiles();
+			for(int i=0; i<archivos.length; i++){
+				String fileXML = archivos[i].getName();
+				if(validarExtencionXML(fileXML)){
+					nombresXML.add(fileXML); //Almacenando los nombres de los xml
+				}
 			}
+		} else {
+			System.out.println("La carpeta espesificada no existe");
 		}
 	}
 	
-	public boolean validarExtencionXML(String archivo){
+	/**
+	 * Valida que la cadena recibida sea el nombre de un archivo xml.
+	 * @param archivo nombre y extención del archivo encontrado en la carpeta.
+	 * @return "Verdadero" encaso de que el archivo sea un xml,
+	 *         "Falso" en el caso contrario.
+	 */
+	private boolean validarExtencionXML(String archivo){
 		try{
 			String extencion = "";
 			extencion = archivo.substring(archivo.lastIndexOf("."));
@@ -46,9 +58,13 @@ public class ManejadorXml {
 		return false;
 	}
 	
+	/**
+	 * Lee el contenido del archivo xml y lo almacena en un objeto tipo Document para ser retornado
+	 * @param archivo La instancia del archivo a procesar
+	 * @return El contenido del archivo xml, el tipo de retorno es un objeto Document
+	 */
 	public Document leerXML(File archivo){
 		Document documento = null;
-		
 		if(!archivo.exists()){
 			return null;
 		}
@@ -59,7 +75,6 @@ public class ManejadorXml {
 		}catch(Exception e){
 			System.out.println(e.getMessage());
 		}
-		
 		return documento;
 	}
 }
