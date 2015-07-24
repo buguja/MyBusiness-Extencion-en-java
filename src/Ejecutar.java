@@ -1,3 +1,4 @@
+import java.io.File;
 import java.util.ArrayList;
 
 import org.w3c.dom.Document;
@@ -13,12 +14,25 @@ import Procesos.ManejadorXml;
  */
 
 public class Ejecutar {
-
 	public static void main(String[] args) {
-		ManejadorXml mnXML = new ManejadorXml("c:\\xmls\\");
-		ArrayList<Document> documentos = mnXML.getRutasXML();
-		Principal principalGUI = null;
-		Object[][] datos = new Object[documentos.size()][3];
+		String rutaCarpetaXml = "c:\\xmls\\";
+		String carpetaProcesados = rutaCarpetaXml+"procesados";
+		
+		File procesados = new File(carpetaProcesados);
+		if(!procesados.exists()){
+			if(!procesados.mkdir()){
+				System.out.println("No fue posible crear el directorio \"procesados\"");
+			}
+		}
+		
+		/*Principal principalGUI = null;
+		ManejadorXml mnXML = new ManejadorXml(rutaCarpetaXml);
+		String[] nombresXML = new String[mnXML.getNombresXML().size()];
+		mnXML.getNombresXML().toArray(nombresXML);*/
+		
+		/*for(String nombreXML : nombresXML)
+			System.out.println(nombreXML);*/
+		/*Object[][] datos = new Object[documentos.size()][3];
 		
 		for(int i=0; i<documentos.size(); i++){
 			NamedNodeMap comprobante = documentos.get(i).getElementsByTagName("cfdi:Comprobante").item(0).getAttributes();
@@ -27,7 +41,7 @@ public class Ejecutar {
 			NodeList concepto= documentos.get(i).getElementsByTagName("cfdi:Concepto");
 			datos[i][1] = concepto.item(0).getAttributes().getNamedItem("descripcion").getTextContent();
 			
-			datos[i][2] = new Boolean(true);
+			datos[i][2] = new Boolean(true);*/
 			/*Esto está bien pero aun no se puede agregar mas de un atributo en la tabla de del gui principal
 			 * 
 			 * for(int j=0; j<concepto.getLength(); j++){
@@ -35,8 +49,8 @@ public class Ejecutar {
 				System.out.println(concepto.item(j).getAttributes().getNamedItem("cantidad"));
 				System.out.println(concepto.item(j).getAttributes().getNamedItem("descripcion"));
 			}*/
-		}
+		/*}
 		
-		principalGUI = new Principal(datos);
+		principalGUI = new Principal(datos);*/
 	}
 }
