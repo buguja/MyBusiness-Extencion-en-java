@@ -14,13 +14,13 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
-import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
+
+import Procesos.ManejadorXml;
 
 public class Principal extends JFrame implements ActionListener {
 	private JLabel tituloLbl;
@@ -28,7 +28,7 @@ public class Principal extends JFrame implements ActionListener {
 	private JTable tabla;
 	private JTextArea area;
 	
-	public Principal(Object[][] datos) {
+	public Principal(ManejadorXml manejadorXml) {
 		//setModal(true);
 		setTitle("CONTROL DE INVENTARIO");
 		
@@ -63,6 +63,11 @@ public class Principal extends JFrame implements ActionListener {
 		
 		//CREACIÓN DE LA TABLA
 		String[] columnNames = {"Folio","Descripción","Todo",};
+		Object[][] datos = {
+				{"AH013D4", "PCC Ricardo Martinez Velazco", new Boolean(true)},
+				{"AH015E9", "Ponle Color y Computo", new Boolean(false) },
+				{"AH018F1", "Factura 2", new Boolean(true)}
+		}; 
 		
 		DefaultTableModel dtm= new DefaultTableModel(datos,columnNames);
 		 tabla = new JTable(dtm) {
@@ -105,39 +110,5 @@ public class Principal extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
 		
-	}
-	public static void main(String[] args){
-		Object[][] datos = {
-				{"AH013D4", "PCC Ricardo Martinez Velazco", new Boolean(true)},
-				{"AH015E9", "Ponle Color y Computo", new Boolean(false) },
-				{"AH018F1", "Factura 2", new Boolean(true)},
-				{"AH018F1", "Factura 2", new Boolean(true)},
-				{"AH018F1", "Factura 2", new Boolean(true)},
-				{"AH018F1", "Factura 2", new Boolean(true)},
-				{"AH018F1", "Factura 2", new Boolean(true)},
-				{"AH018F1", "Factura 2", new Boolean(true)},
-				{"AH018F1", "Factura 2", new Boolean(true)},
-				{"AH018F1", "Factura 2", new Boolean(true)},
-				{"AH018F1", "Factura 2", new Boolean(true)},
-				{"AH018F1", "Factura 2", new Boolean(true)},
-				{"AH018F1", "Factura 2", new Boolean(true)},
-				{"AH018F1", "Factura 2", new Boolean(true)},
-				{"AH018F1", "Factura 2", new Boolean(true)},
-				{"AH018F1", "Factura 2", new Boolean(true)},
-				{"AH018F1", "Factura 2", new Boolean(true)},
-				{"AH018F1", "Factura 2", new Boolean(true)},
-				{"AH018F1", "Factura 2", new Boolean(true)},
-				{"AH018F1", "Factura 2", new Boolean(true)},
-				{"AH018F1", "Factura 2", new Boolean(true)},
-				{"AH018F1", "Factura 2", new Boolean(true)},
-				{"AH018F1", "Factura 2", new Boolean(true)},
-				{"AH018F1", "Factura 2", new Boolean(true)},
-				{"AH018F1", "Factura 2", new Boolean(true)},
-				{"AH018F1", "Factura 2", new Boolean(true)},
-				{"AH018F1", "Factura 2", new Boolean(true)},
-				{"AH018F1", "Factura 2", new Boolean(true)},
-				{"AH018F1", "Factura 2", new Boolean(true)},
-		}; 
-		new Principal(datos);
 	}
 }
