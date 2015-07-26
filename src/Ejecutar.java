@@ -14,18 +14,8 @@ import Procesos.ManejadorXml;
  */
 
 public class Ejecutar {
-	public static void main(String[] args) {
-		String rutaCarpetaXml = "c:\\xmls\\";
-		String carpetaProcesados = rutaCarpetaXml+"procesados";
-		
-		File procesados = new File(carpetaProcesados);
-		if(!procesados.exists()){
-			if(!procesados.mkdir()){
-				System.out.println("No fue posible crear el directorio \"procesados\"");
-			}
-		}
-		
-		new Principal(new ManejadorXml(rutaCarpetaXml));
+	public static void main(String[] args) {	
+		new Principal();
 		
 		/*Principal principalGUI = null;
 		ManejadorXml mnXML = new ManejadorXml(rutaCarpetaXml);
